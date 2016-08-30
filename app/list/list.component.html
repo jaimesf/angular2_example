@@ -1,0 +1,25 @@
+<div class="container">
+      <h2>Booklist</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Author</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr *ngFor="let book of books; let i=index">
+            <td>{{book.bookTitle}}</td>
+            <td>{{book.bookDescription}}</td>
+            <td>{{book.bookAuthor}}</td>
+            <td>
+              <button class="btn btn-default" (click)="editBook(book, i)">Edit</button>
+              <button class="btn btn-default" (click)="deleteBook(i)">Remove</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>

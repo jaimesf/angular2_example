@@ -1,0 +1,30 @@
+<div class="container">
+
+      <form *ngIf="active">
+        <h2>New Book</h2>
+        <input type="hidden" class="form-control" [(ngModel)]="book.bookIndex" name="bookIndex" #bookIndex="ngModel" >
+        <div class="form-group">
+                  <label for="title">Book title:</label>
+                  <input type="text" class="form-control" id="title" name="bookTitle" [(ngModel)]="book.bookTitle" #bookTitle="ngModel" required>
+                  <div [hidden]="bookTitle.valid ||bookTitle.pristine" class="alert alert-danger">
+                    Title Required
+                  </div>
+        </div>
+        <div class="form-group">
+          <label for="description">Description:</label>
+          <input type="text" class="form-control" id="description" name="bookDescription" #bookDescription="ngModel" [(ngModel)]="book.bookDescription" required>
+          <div [hidden]="bookDescription.valid || bookDescription.pristine" class="alert alert-danger">
+            Description Required
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="author">Author:</label>
+          <input type="text" class="form-control" id="author" name="bookAuthor" #bookAuthor="ngModel" [(ngModel)]="book.bookAuthor" required>
+          <div [hidden]="bookAuthor.valid || bookAuthor.pristine" class="alert alert-danger">
+            Author Required
+          </div>
+        </div>
+        <button [disabled]="!bookTitle.valid || !bookAuthor.valid || !bookDescription.valid" (click)="saveBook()" class="btn btn-default">Save book</button>
+        <button (click)="cleanNewBook()" class="btn btn-default">Clean book</button>
+      </form>
+    </div>
